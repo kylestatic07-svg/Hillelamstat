@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechLine Catalog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: white;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      background: #020617;
+    }
+    .search {
+      text-align: center;
+      padding: 10px;
+    }
+    input {
+      padding: 10px;
+      width: 60%;
+      border-radius: 8px;
+      border: none;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .price {
+      color: #22c55e;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .whatsapp {
+      background: #25D366;
+      color: white;
+    }
+  </style>
+</head>
+<body><header>⚡ TechLine Gadget Catalog</header><div class="search">
+  <input type="text" id="search" placeholder="Search products..." onkeyup="filterProducts()">
+</div><div class="container" id="products">  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Phone">
+    <h3>Samsung A25</h3>
+    <div class="price">₪500</div>
+    <button class="whatsapp" onclick="order('Samsung A25')">Order</button>
+  </div>  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Charger">
+    <h3>Fast Charger 25W</h3>
+    <div class="price">₪50</div>
+    <button class="whatsapp" onclick="order('Fast Charger 25W')">Order</button>
+  </div>  <div class="card">
+    <img src="https://via.placeholder.com/200" alt="Earbuds">
+    <h3>Wireless Earbuds</h3>
+    <div class="price">₪120</div>
+    <button class="whatsapp" onclick="order('Wireless Earbuds')">Order</button>
+  </div></div><script>
+function filterProducts() {
+  let input = document.getElementById('search').value.toLowerCase();
+  let cards = document.getElementsByClassName('card');
+
+  for (let i = 0; i < cards.length; i++) {
+    let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+    cards[i].style.display = title.includes(input) ? '' : 'none';
+  }
+}
+
+function order(product) {
+  let phone = '972XXXXXXXXX'; // replace with your number
+  let message = `Hello, I want to order: ${product}`;
+  let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+</script></body>
+</html>
